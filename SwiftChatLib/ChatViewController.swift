@@ -60,8 +60,9 @@ extension ChatViewController: MessengerBehavoirDelegate {
 }
 
 extension ChatViewController: MessengerInputBehaviourDelegate {
-    func sendInput<T>(message: T, from: InputType) {
-        print(message)
+    
+    func sendInput(message: GenericMessage) {
+        messengerView.sendMessage(message: message)
     }
     
     func translateY(to: CGFloat) {

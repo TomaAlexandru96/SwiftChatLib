@@ -16,10 +16,11 @@
 		2278BE2E1FA9E7170015FD73 /* SwiftChatLibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2278BE2D1FA9E7170015FD73 /* SwiftChatLibTests.swift */; };
 		2278BE391FA9E7170015FD73 /* SwiftChatLibUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2278BE381FA9E7170015FD73 /* SwiftChatLibUITests.swift */; };
 		227AEDA81FAA2B26001B7202 /* MessengerInputBehaviourDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227AEDA71FAA2B26001B7202 /* MessengerInputBehaviourDelegate.swift */; };
+		227AEDAA1FAA385A001B7202 /* MessengerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227AEDA91FAA385A001B7202 /* MessengerCell.swift */; };
+		227AEDAC1FAA39CE001B7202 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227AEDAB1FAA39CE001B7202 /* Message.swift */; };
 		22CA6C121FA9F0C000EAF761 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22CA6C111FA9F0C000EAF761 /* Chat.storyboard */; };
 		22CA6C181FA9F50A00EAF761 /* MessengerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA6C171FA9F50A00EAF761 /* MessengerCollectionView.swift */; };
 		22CA6C1C1FA9F55000EAF761 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA6C1B1FA9F55000EAF761 /* TextInputView.swift */; };
-		22CA6C1E1FA9F6B000EAF761 /* MessengerFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA6C1D1FA9F6B000EAF761 /* MessengerFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +56,11 @@
 		2278BE381FA9E7170015FD73 /* SwiftChatLibUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChatLibUITests.swift; sourceTree = "<group>"; };
 		2278BE3A1FA9E7170015FD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		227AEDA71FAA2B26001B7202 /* MessengerInputBehaviourDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerInputBehaviourDelegate.swift; sourceTree = "<group>"; };
+		227AEDA91FAA385A001B7202 /* MessengerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerCell.swift; sourceTree = "<group>"; };
+		227AEDAB1FAA39CE001B7202 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		22CA6C111FA9F0C000EAF761 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		22CA6C171FA9F50A00EAF761 /* MessengerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerCollectionView.swift; sourceTree = "<group>"; };
 		22CA6C1B1FA9F55000EAF761 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
-		22CA6C1D1FA9F6B000EAF761 /* MessengerFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				22CA6C171FA9F50A00EAF761 /* MessengerCollectionView.swift */,
-				22CA6C1D1FA9F6B000EAF761 /* MessengerFlow.swift */,
 				224069821FAA22BC0086C8BD /* MessengerBehavoirDelegate.swift */,
+				227AEDA91FAA385A001B7202 /* MessengerCell.swift */,
+				227AEDAB1FAA39CE001B7202 /* Message.swift */,
 			);
 			path = Messenger;
 			sourceTree = "<group>";
@@ -292,13 +295,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22CA6C1E1FA9F6B000EAF761 /* MessengerFlow.swift in Sources */,
 				2240697F1FAA0B6D0086C8BD /* MessengerInput.swift in Sources */,
 				227AEDA81FAA2B26001B7202 /* MessengerInputBehaviourDelegate.swift in Sources */,
 				22CA6C181FA9F50A00EAF761 /* MessengerCollectionView.swift in Sources */,
 				2278BE1B1FA9E7160015FD73 /* ChatViewController.swift in Sources */,
 				224069831FAA22BC0086C8BD /* MessengerBehavoirDelegate.swift in Sources */,
+				227AEDAA1FAA385A001B7202 /* MessengerCell.swift in Sources */,
 				2278BE191FA9E7160015FD73 /* AppDelegate.swift in Sources */,
+				227AEDAC1FAA39CE001B7202 /* Message.swift in Sources */,
 				224069811FAA1E810086C8BD /* InputType.swift in Sources */,
 				22CA6C1C1FA9F55000EAF761 /* TextInputView.swift in Sources */,
 			);

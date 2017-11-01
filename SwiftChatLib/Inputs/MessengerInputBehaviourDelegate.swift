@@ -10,5 +10,5 @@ import UIKit
 
 protocol MessengerInputBehaviourDelegate {
     func translateY(to: CGFloat)
-    func sendInput<T>(message: T, from: InputType)
+    func sendInput(message: GenericMessage)
 }

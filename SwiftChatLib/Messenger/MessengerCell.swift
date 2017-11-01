@@ -1,5 +1,5 @@
 //
-//  MessengerFlowController.swift
+//  MessengerCell.swift
 //  SwiftChatLib
 //
 //  Created by Alexandru Toma on 01/11/2017.
@@ -8,6 +8,10 @@
 
 import UIKit
 
-class MessengerFlow: UICollectionViewFlowLayout {
+class MessengerCell: UICollectionViewCell {
+    
+    func setText(text: String) {
+        print(subviews.count)
+    }
     
 }
