@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2240697F1FAA0B6D0086C8BD /* MessengerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240697E1FAA0B6D0086C8BD /* MessengerInput.swift */; };
+		224069811FAA1E810086C8BD /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224069801FAA1E810086C8BD /* InputType.swift */; };
+		224069831FAA22BC0086C8BD /* MessengerBehavoirDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224069821FAA22BC0086C8BD /* MessengerBehavoirDelegate.swift */; };
 		2278BE191FA9E7160015FD73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2278BE181FA9E7160015FD73 /* AppDelegate.swift */; };
 		2278BE1B1FA9E7160015FD73 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2278BE1A1FA9E7160015FD73 /* ChatViewController.swift */; };
-		2278BE1E1FA9E7160015FD73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2278BE1C1FA9E7160015FD73 /* Main.storyboard */; };
 		2278BE201FA9E7160015FD73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2278BE1F1FA9E7160015FD73 /* Assets.xcassets */; };
-		2278BE231FA9E7160015FD73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2278BE211FA9E7160015FD73 /* LaunchScreen.storyboard */; };
 		2278BE2E1FA9E7170015FD73 /* SwiftChatLibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2278BE2D1FA9E7170015FD73 /* SwiftChatLibTests.swift */; };
 		2278BE391FA9E7170015FD73 /* SwiftChatLibUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2278BE381FA9E7170015FD73 /* SwiftChatLibUITests.swift */; };
+		227AEDA81FAA2B26001B7202 /* MessengerInputBehaviourDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227AEDA71FAA2B26001B7202 /* MessengerInputBehaviourDelegate.swift */; };
+		22CA6C121FA9F0C000EAF761 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22CA6C111FA9F0C000EAF761 /* Chat.storyboard */; };
+		22CA6C181FA9F50A00EAF761 /* MessengerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA6C171FA9F50A00EAF761 /* MessengerCollectionView.swift */; };
+		22CA6C1C1FA9F55000EAF761 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA6C1B1FA9F55000EAF761 /* TextInputView.swift */; };
+		22CA6C1E1FA9F6B000EAF761 /* MessengerFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA6C1D1FA9F6B000EAF761 /* MessengerFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,12 +40,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2240697E1FAA0B6D0086C8BD /* MessengerInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerInput.swift; sourceTree = "<group>"; };
+		224069801FAA1E810086C8BD /* InputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputType.swift; sourceTree = "<group>"; };
+		224069821FAA22BC0086C8BD /* MessengerBehavoirDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerBehavoirDelegate.swift; sourceTree = "<group>"; };
 		2278BE151FA9E7160015FD73 /* SwiftChatLib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChatLib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2278BE181FA9E7160015FD73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2278BE1A1FA9E7160015FD73 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		2278BE1D1FA9E7160015FD73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2278BE1F1FA9E7160015FD73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2278BE221FA9E7160015FD73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2278BE241FA9E7160015FD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2278BE291FA9E7170015FD73 /* SwiftChatLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChatLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2278BE2D1FA9E7170015FD73 /* SwiftChatLibTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChatLibTests.swift; sourceTree = "<group>"; };
@@ -47,6 +54,11 @@
 		2278BE341FA9E7170015FD73 /* SwiftChatLibUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChatLibUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2278BE381FA9E7170015FD73 /* SwiftChatLibUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChatLibUITests.swift; sourceTree = "<group>"; };
 		2278BE3A1FA9E7170015FD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		227AEDA71FAA2B26001B7202 /* MessengerInputBehaviourDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerInputBehaviourDelegate.swift; sourceTree = "<group>"; };
+		22CA6C111FA9F0C000EAF761 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		22CA6C171FA9F50A00EAF761 /* MessengerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerCollectionView.swift; sourceTree = "<group>"; };
+		22CA6C1B1FA9F55000EAF761 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
+		22CA6C1D1FA9F6B000EAF761 /* MessengerFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,10 +110,11 @@
 			isa = PBXGroup;
 			children = (
 				2278BE181FA9E7160015FD73 /* AppDelegate.swift */,
+				22CA6C201FA9FA8F00EAF761 /* Inputs */,
+				22CA6C1F1FA9FA8300EAF761 /* Messenger */,
 				2278BE1A1FA9E7160015FD73 /* ChatViewController.swift */,
-				2278BE1C1FA9E7160015FD73 /* Main.storyboard */,
+				22CA6C111FA9F0C000EAF761 /* Chat.storyboard */,
 				2278BE1F1FA9E7160015FD73 /* Assets.xcassets */,
-				2278BE211FA9E7160015FD73 /* LaunchScreen.storyboard */,
 				2278BE241FA9E7160015FD73 /* Info.plist */,
 			);
 			path = SwiftChatLib;
@@ -123,6 +136,27 @@
 				2278BE3A1FA9E7170015FD73 /* Info.plist */,
 			);
 			path = SwiftChatLibUITests;
+			sourceTree = "<group>";
+		};
+		22CA6C1F1FA9FA8300EAF761 /* Messenger */ = {
+			isa = PBXGroup;
+			children = (
+				22CA6C171FA9F50A00EAF761 /* MessengerCollectionView.swift */,
+				22CA6C1D1FA9F6B000EAF761 /* MessengerFlow.swift */,
+				224069821FAA22BC0086C8BD /* MessengerBehavoirDelegate.swift */,
+			);
+			path = Messenger;
+			sourceTree = "<group>";
+		};
+		22CA6C201FA9FA8F00EAF761 /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				22CA6C1B1FA9F55000EAF761 /* TextInputView.swift */,
+				2240697E1FAA0B6D0086C8BD /* MessengerInput.swift */,
+				224069801FAA1E810086C8BD /* InputType.swift */,
+				227AEDA71FAA2B26001B7202 /* MessengerInputBehaviourDelegate.swift */,
+			);
+			path = Inputs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +266,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2278BE231FA9E7160015FD73 /* LaunchScreen.storyboard in Resources */,
+				22CA6C121FA9F0C000EAF761 /* Chat.storyboard in Resources */,
 				2278BE201FA9E7160015FD73 /* Assets.xcassets in Resources */,
-				2278BE1E1FA9E7160015FD73 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +292,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22CA6C1E1FA9F6B000EAF761 /* MessengerFlow.swift in Sources */,
+				2240697F1FAA0B6D0086C8BD /* MessengerInput.swift in Sources */,
+				227AEDA81FAA2B26001B7202 /* MessengerInputBehaviourDelegate.swift in Sources */,
+				22CA6C181FA9F50A00EAF761 /* MessengerCollectionView.swift in Sources */,
 				2278BE1B1FA9E7160015FD73 /* ChatViewController.swift in Sources */,
+				224069831FAA22BC0086C8BD /* MessengerBehavoirDelegate.swift in Sources */,
 				2278BE191FA9E7160015FD73 /* AppDelegate.swift in Sources */,
+				224069811FAA1E810086C8BD /* InputType.swift in Sources */,
+				22CA6C1C1FA9F55000EAF761 /* TextInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,25 +334,6 @@
 			targetProxy = 2278BE351FA9E7170015FD73 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		2278BE1C1FA9E7160015FD73 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2278BE1D1FA9E7160015FD73 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2278BE211FA9E7160015FD73 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2278BE221FA9E7160015FD73 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2278BE3B1FA9E7170015FD73 /* Debug */ = {

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L3f-hV-cpa">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chat View Controller-->
+        <scene sceneID="9bQ-Pt-3TW">
+            <objects>
+                <viewController id="L3f-hV-cpa" customClass="ChatViewController" customModule="SwiftChatLib" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vLQ-9E-ZoR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bwf-9Q-7LE" userLabel="Messenger Collection View" customClass="MessengerCollectionView" customModule="SwiftChatLib" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lVW-CG-UbQ" customClass="MessengerFlow" customModule="SwiftChatLib" customModuleProvider="target">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BoG-2l-5uH">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzN-zb-f5q" userLabel="Input View">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8kH-L7-ZjD"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XzN-zb-f5q" firstAttribute="leading" secondItem="hSP-sx-Opf" secondAttribute="leading" id="42l-a1-jo7"/>
+                            <constraint firstItem="Bwf-9Q-7LE" firstAttribute="leading" secondItem="hSP-sx-Opf" secondAttribute="leading" id="72k-sn-owX"/>
+                            <constraint firstItem="Bwf-9Q-7LE" firstAttribute="top" secondItem="vLQ-9E-ZoR" secondAttribute="top" id="OWD-LA-pr2"/>
+                            <constraint firstItem="XzN-zb-f5q" firstAttribute="trailing" secondItem="hSP-sx-Opf" secondAttribute="trailing" id="Sic-sw-deG"/>
+                            <constraint firstItem="XzN-zb-f5q" firstAttribute="firstBaseline" secondItem="Bwf-9Q-7LE" secondAttribute="baseline" id="YT0-1w-9Dy"/>
+                            <constraint firstItem="XzN-zb-f5q" firstAttribute="bottom" secondItem="hSP-sx-Opf" secondAttribute="bottom" id="eKc-bM-m7h"/>
+                            <constraint firstItem="Bwf-9Q-7LE" firstAttribute="trailing" secondItem="hSP-sx-Opf" secondAttribute="trailing" id="qe0-bE-ZTQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hSP-sx-Opf"/>
+                    </view>
+                    <connections>
+                        <outlet property="inputViewHeightConstraint" destination="8kH-L7-ZjD" id="0uV-aA-TrS"/>
+                        <outlet property="messengerInputView" destination="XzN-zb-f5q" id="KZX-9Y-6yS"/>
+                        <outlet property="messengerView" destination="Bwf-9Q-7LE" id="z6l-Cd-1Ps"/>
+                        <outlet property="textInputElement" destination="Xyt-2c-fU8" id="DbM-L2-lU2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hla-gR-Xxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view tag="1" contentMode="scaleToFill" restorationIdentifier="TextInputView" id="Xyt-2c-fU8" userLabel="Text Input View" customClass="TextInputView" customModule="SwiftChatLib" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say something" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W2d-g4-Cqi" userLabel="Text Input Field">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="W2d-g4-Cqi" firstAttribute="top" secondItem="RFd-jU-ihN" secondAttribute="top" id="GFE-1W-sWO"/>
+                        <constraint firstItem="RFd-jU-ihN" firstAttribute="bottom" secondItem="W2d-g4-Cqi" secondAttribute="bottom" id="XNn-KH-n8Y"/>
+                        <constraint firstItem="RFd-jU-ihN" firstAttribute="trailing" secondItem="W2d-g4-Cqi" secondAttribute="trailing" id="fJV-aT-2P4"/>
+                        <constraint firstItem="W2d-g4-Cqi" firstAttribute="leading" secondItem="RFd-jU-ihN" secondAttribute="leading" id="ige-uV-JPg"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="RFd-jU-ihN"/>
+                    <connections>
+                        <outlet property="inputField" destination="W2d-g4-Cqi" id="2KI-9W-ffR"/>
+                    </connections>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="20" y="-173.16341829085459"/>
+        </scene>
+    </scenes>
+</document>

@@ -9,16 +9,63 @@
 import UIKit
 
 class ChatViewController: UIViewController {
-
+    
+    @IBOutlet var textInputElement: TextInputView!
+    @IBOutlet weak var messengerView: MessengerCollectionView!
+    @IBOutlet weak var messengerInputView: UIView!
+    @IBOutlet weak var inputViewHeightConstraint: NSLayoutConstraint!
+    
+    var elements: [InputType: MessengerInput] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        initMessengerView()
+        initMessengerInputView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func initMessengerView() {
+        messengerView.behavoirdDelegate = self
     }
-
+    
+    func initMessengerInputView() {
+        elements = [
+            .TextInput: textInputElement
+        ]
+        changeInputView(to: .TextInput)
+    }
+    
+    func changeInputView(to inputViewType: InputType) {
+        guard let inputView = elements[inputViewType] else {
+            fatalError("Should be able to find the enum in the dictionary")
+        }
+        messengerInputView.subviews.forEach { $0.removeFromSuperview() }
+        messengerInputView.addSubview(inputView)
+        inputView.setup(delegate: self)
+        inputViewHeightConstraint.constant = inputView.frame.height
+    }
+    
 }
 
+extension ChatViewController: MessengerBehavoirDelegate {
+    
+    func hideKeyboard() {
+        messengerInputView.subviews.forEach({
+            guard let messengerInput = $0 as? MessengerInput else {
+                return
+            }
+            messengerInput.hideKeyboard()
+        })
+    }
+    
+}
+
+extension ChatViewController: MessengerInputBehaviourDelegate {
+    func sendInput<T>(message: T, from: InputType) {
+        print(message)
+    }
+    
+    func translateY(to: CGFloat) {
+        view.frame.origin.y = to
+    }
+    
+}
