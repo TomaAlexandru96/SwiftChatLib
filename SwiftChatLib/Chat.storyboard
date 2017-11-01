@@ -50,6 +50,33 @@
                                         </constraints>
                                         <size key="customSize" width="360" height="50"/>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RightCell" id="H9S-dF-vz7" userLabel="Right Cell" customClass="MessengerCell" customModule="SwiftChatLib" customModuleProvider="target">
+                                        <rect key="frame" x="7.5" y="60" width="360" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ohf-xb-EKE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
+                                                    <color key="backgroundColor" red="0.72549019607843135" green="0.82352941176470584" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.72549019607843135" green="0.82352941176470584" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Ohf-xb-EKE" firstAttribute="top" secondItem="H9S-dF-vz7" secondAttribute="top" id="cdy-TZ-QWo"/>
+                                            <constraint firstItem="Ohf-xb-EKE" firstAttribute="leading" secondItem="H9S-dF-vz7" secondAttribute="leading" id="k5k-jI-DKB"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ohf-xb-EKE" secondAttribute="trailing" id="uHV-ff-alr"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ohf-xb-EKE" secondAttribute="bottom" id="z8u-w3-vwV"/>
+                                        </constraints>
+                                        <size key="customSize" width="360" height="50"/>
+                                    </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzN-zb-f5q" userLabel="Input View">

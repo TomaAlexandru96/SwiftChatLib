@@ -10,7 +10,7 @@ import Foundation
 
 enum MessageSource {
     case Me
-    case AI
+    case Other
 }
 
 class GenericMessage {

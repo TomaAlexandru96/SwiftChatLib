@@ -1,5 +1,5 @@
 //
-//  MessengerCell.swift
+//  RightMessageCell.swift
 //  SwiftChatLib
 //
 //  Created by Alexandru Toma on 01/11/2017.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class MessengerCell: UICollectionViewCell {
+class RightMessengerCell: UICollectionViewCell {
     
     func setText(text: String) {
-        print(subviews.count)
+        print(text)
     }
     
 }

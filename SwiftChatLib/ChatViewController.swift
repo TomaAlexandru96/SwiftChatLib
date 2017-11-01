@@ -16,11 +16,14 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var inputViewHeightConstraint: NSLayoutConstraint!
     
     var elements: [InputType: MessengerInput] = [:]
+    fileprivate var AI: AILogic!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initMessengerView()
         initMessengerInputView()
+        AI = AILogic(chat: self)
+        AI.start()
     }
     
     func initMessengerView() {
