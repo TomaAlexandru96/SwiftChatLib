@@ -35,10 +35,10 @@ extension MessengerCollectionViewController {
     
     func sendMessage(message: GenericMessage) {
         data.append(message)
-        
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
         }
+        behaviorDelegate.receivedMessage(message: message)
     }
     
     override func collectionView(_ collectionView: UICollectionView,

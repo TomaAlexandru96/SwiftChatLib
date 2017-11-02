@@ -24,8 +24,7 @@ class ChatViewController: UIViewController {
         super.viewDidAppear(animated)
         initMessengerView()
         initMessengerInputView()
-        AILogicForm.setChat(chat: self)
-        AILogicForm.start()
+        initAI()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,6 +44,11 @@ class ChatViewController: UIViewController {
             .TextInput: textInputElement
         ]
         changeInputView(to: .TextInput)
+    }
+    
+    func initAI() {
+        AILogicForm.setChat(chat: self)
+        AILogicForm.startAI()
     }
     
     func changeInputView(to inputViewType: InputType) {
@@ -68,6 +72,12 @@ extension ChatViewController: MessengerBehavoirDelegate {
             }
             messengerInput.hideKeyboard()
         })
+    }
+    
+    func receivedMessage(message: GenericMessage) {
+        if (message.from == .Me) {
+            AILogicForm.recordInput(message: message)
+        }
     }
     
 }

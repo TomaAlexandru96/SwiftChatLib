@@ -9,6 +9,7 @@
 import UIKit
 
 class LeftMessengerCell: UICollectionViewCell {
+    
     @IBOutlet weak var textview: UITextView!
     
     func setText(text: String) {

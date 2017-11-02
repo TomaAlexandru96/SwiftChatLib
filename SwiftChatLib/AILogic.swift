@@ -11,10 +11,12 @@ import Foundation
 class AILogic {
     
     fileprivate var chat: ChatViewController!
-    fileprivate let WAIT_TIME_SHORT: UInt32 = 500000
-    fileprivate let WAIT_TIME_LONG: UInt32 = 1000000
-    fileprivate var inputSema: semaphore_t = semaphore_t(0)
-    fileprivate var inputMessage: GenericMessage!
+    fileprivate let SHORT: Double = 0.2
+    fileprivate let LONG: Double = 0.5
+    fileprivate var inputSema: DispatchSemaphore = DispatchSemaphore(value: 0)
+    private let formQueue: DispatchQueue = DispatchQueue.global()
+    private var timeSema: DispatchSemaphore = DispatchSemaphore(value: 0)
+    private var inputMessage: GenericMessage!
     
     func setChat(chat: ChatViewController) {
         self.chat = chat
@@ -22,18 +24,35 @@ class AILogic {
     
     func recordInput(message: GenericMessage) {
         inputMessage = message
-        semaphore_signal(inputSema)
+        formQueue.async {
+            self.inputSema.signal()
+        }
     }
     
-    fileprivate func waitForInput() {
-        semaphore_wait(inputSema)
+    // has to be in formQueue
+    fileprivate func waitForInput() -> GenericMessage {
+        inputSema.wait()
+        return inputMessage
+    }
+    
+    func startAI() {
+        formQueue.async {
+            self.start()
+        }
+    }
+    
+    // has to be in formQueue
+    fileprivate func delay(time: Double) {
+        formQueue.asyncAfter(deadline: DispatchTime.now() + time) {
+            self.timeSema.signal()
+        }
+        timeSema.wait()
     }
     
     // to be overriden by children
     fileprivate func setup() {}
-    func start() {}
+    fileprivate func start() {}
     func restart() {}
-    
 }
 
 class QuoteAI: AILogic {
@@ -47,11 +66,10 @@ class QuoteAI: AILogic {
     
     override func start() {
         super.start()
-        DispatchQueue.main.async {
-            self.chat.sendInput(message: TextMessage(content: "Hello", from: .Other))
-            usleep(self.WAIT_TIME_LONG)
-            self.chat.sendInput(message: TextMessage(content: "How are you?", from: .Other))
-        }
+        chat.sendInput(message: TextMessage(content: "Hello", from: .Other))
+        delay(time: LONG)
+        self.chat.sendInput(message: TextMessage(content: "How are you?", from: .Other))
+        print((self.waitForInput() as! TextMessage).content)
     }
     
 }
@@ -59,7 +77,7 @@ class QuoteAI: AILogic {
 /*
  pet name: input (text)
  type of pet: selector (dog / cat)
- pet gender: selector (male/female)
+ pet gender: selector (male / female)
  pet breed: selector with search connected to back-end - when searching make request to /breeds - look into gateway-api for docs
  age: selector (<1 year, 1-3 years, 3-5 years, 5-8 years, 8+ years)
  address: start typing postcode, connect to /addresses (check gateway-api for docs), it returns addresses based on search, you select one
