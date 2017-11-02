@@ -58,7 +58,6 @@ extension TextInputView: UITextFieldDelegate {
         }
         behavoirDelegate.sendInput(message: TextMessage(content: inputText, from: .Me))
         textField.text = ""
-        textField.resignFirstResponder()
         return true
     }
     

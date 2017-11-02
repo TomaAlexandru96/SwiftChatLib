@@ -10,8 +10,10 @@ import UIKit
 
 class RightMessengerCell: UICollectionViewCell {
     
+    @IBOutlet weak var textView: UITextView!
+    
     func setText(text: String) {
-        print(text)
+        textView.text = text
     }
     
 }

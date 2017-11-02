@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,67 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bwf-9Q-7LE" userLabel="Messenger Collection View" customClass="MessengerCollectionView" customModule="SwiftChatLib" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewLayout key="collectionViewLayout" id="xJE-ib-4ll"/>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LeftCell" id="BoG-2l-5uH" userLabel="Left Cell" customClass="MessengerCell" customModule="SwiftChatLib" customModuleProvider="target">
-                                        <rect key="frame" x="7.5" y="0.0" width="360" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lhe-Wa-cKf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.63529411764705879" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" red="0.0" green="0.63529411764705879" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="lhe-Wa-cKf" firstAttribute="top" secondItem="BoG-2l-5uH" secondAttribute="top" id="cab-aQ-y5d"/>
-                                            <constraint firstAttribute="bottom" secondItem="lhe-Wa-cKf" secondAttribute="bottom" id="mNf-Ug-SLC"/>
-                                            <constraint firstAttribute="trailing" secondItem="lhe-Wa-cKf" secondAttribute="trailing" id="nHZ-5T-hrM"/>
-                                            <constraint firstItem="lhe-Wa-cKf" firstAttribute="leading" secondItem="BoG-2l-5uH" secondAttribute="leading" id="w5w-k4-iAh"/>
-                                        </constraints>
-                                        <size key="customSize" width="360" height="50"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RightCell" id="H9S-dF-vz7" userLabel="Right Cell" customClass="MessengerCell" customModule="SwiftChatLib" customModuleProvider="target">
-                                        <rect key="frame" x="7.5" y="60" width="360" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ohf-xb-EKE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
-                                                    <color key="backgroundColor" red="0.72549019607843135" green="0.82352941176470584" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" red="0.72549019607843135" green="0.82352941176470584" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="Ohf-xb-EKE" firstAttribute="top" secondItem="H9S-dF-vz7" secondAttribute="top" id="cdy-TZ-QWo"/>
-                                            <constraint firstItem="Ohf-xb-EKE" firstAttribute="leading" secondItem="H9S-dF-vz7" secondAttribute="leading" id="k5k-jI-DKB"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ohf-xb-EKE" secondAttribute="trailing" id="uHV-ff-alr"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ohf-xb-EKE" secondAttribute="bottom" id="z8u-w3-vwV"/>
-                                        </constraints>
-                                        <size key="customSize" width="360" height="50"/>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzN-zb-f5q" userLabel="Input View">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -86,23 +26,29 @@
                                     <constraint firstAttribute="height" constant="50" id="8kH-L7-ZjD"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B22-ED-wXd" userLabel="Messenger Container View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
+                                <connections>
+                                    <segue destination="Wr0-LA-v3W" kind="embed" identifier="ChatMessengerSegue" id="zpv-fX-1mJ"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="XzN-zb-f5q" firstAttribute="leading" secondItem="hSP-sx-Opf" secondAttribute="leading" id="42l-a1-jo7"/>
-                            <constraint firstItem="Bwf-9Q-7LE" firstAttribute="leading" secondItem="hSP-sx-Opf" secondAttribute="leading" id="72k-sn-owX"/>
-                            <constraint firstItem="Bwf-9Q-7LE" firstAttribute="top" secondItem="vLQ-9E-ZoR" secondAttribute="top" id="OWD-LA-pr2"/>
+                            <constraint firstItem="B22-ED-wXd" firstAttribute="top" secondItem="vLQ-9E-ZoR" secondAttribute="top" id="6kI-Gv-VZq"/>
+                            <constraint firstItem="B22-ED-wXd" firstAttribute="trailing" secondItem="hSP-sx-Opf" secondAttribute="trailing" id="9XX-BW-aTe"/>
                             <constraint firstItem="XzN-zb-f5q" firstAttribute="trailing" secondItem="hSP-sx-Opf" secondAttribute="trailing" id="Sic-sw-deG"/>
-                            <constraint firstItem="XzN-zb-f5q" firstAttribute="firstBaseline" secondItem="Bwf-9Q-7LE" secondAttribute="baseline" id="YT0-1w-9Dy"/>
                             <constraint firstItem="XzN-zb-f5q" firstAttribute="bottom" secondItem="hSP-sx-Opf" secondAttribute="bottom" id="eKc-bM-m7h"/>
-                            <constraint firstItem="Bwf-9Q-7LE" firstAttribute="trailing" secondItem="hSP-sx-Opf" secondAttribute="trailing" id="qe0-bE-ZTQ"/>
+                            <constraint firstItem="B22-ED-wXd" firstAttribute="leading" secondItem="hSP-sx-Opf" secondAttribute="leading" id="ofh-R2-FPh"/>
+                            <constraint firstItem="XzN-zb-f5q" firstAttribute="firstBaseline" secondItem="B22-ED-wXd" secondAttribute="baseline" constant="8" symbolType="layoutAnchor" id="p7A-zh-aTP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hSP-sx-Opf"/>
                     </view>
                     <connections>
                         <outlet property="inputViewHeightConstraint" destination="8kH-L7-ZjD" id="0uV-aA-TrS"/>
                         <outlet property="messengerInputView" destination="XzN-zb-f5q" id="KZX-9Y-6yS"/>
-                        <outlet property="messengerView" destination="Bwf-9Q-7LE" id="z6l-Cd-1Ps"/>
                         <outlet property="textInputElement" destination="Xyt-2c-fU8" id="DbM-L2-lU2"/>
                     </connections>
                 </viewController>
@@ -132,6 +78,99 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="20" y="-173.16341829085459"/>
+        </scene>
+        <!--Messenger Collection View Controller-->
+        <scene sceneID="4e2-VE-gYE">
+            <objects>
+                <collectionViewController storyboardIdentifier="MessengerCollectionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wr0-LA-v3W" customClass="MessengerCollectionViewController" customModule="SwiftChatLib" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="I26-dU-PPE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FRa-LJ-2Rq">
+                            <size key="itemSize" width="300" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LeftCell" id="BoG-2l-5uH" userLabel="Left Cell" customClass="LeftMessengerCell" customModule="SwiftChatLib" customModuleProvider="target">
+                                <rect key="frame" x="7.5" y="0.0" width="360" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lhe-Wa-cKf">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
+                                            <color key="backgroundColor" red="0.0" green="0.63529411764705879" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" red="0.0" green="0.63529411764705879" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="lhe-Wa-cKf" firstAttribute="top" secondItem="BoG-2l-5uH" secondAttribute="top" id="cab-aQ-y5d"/>
+                                    <constraint firstAttribute="bottom" secondItem="lhe-Wa-cKf" secondAttribute="bottom" id="mNf-Ug-SLC"/>
+                                    <constraint firstAttribute="trailing" secondItem="lhe-Wa-cKf" secondAttribute="trailing" id="nHZ-5T-hrM"/>
+                                    <constraint firstItem="lhe-Wa-cKf" firstAttribute="leading" secondItem="BoG-2l-5uH" secondAttribute="leading" id="w5w-k4-iAh"/>
+                                </constraints>
+                                <size key="customSize" width="360" height="50"/>
+                                <connections>
+                                    <outlet property="textview" destination="lhe-Wa-cKf" id="71D-cb-awO"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RightCell" id="H9S-dF-vz7" userLabel="Right Cell" customClass="RightMessengerCell" customModule="SwiftChatLib" customModuleProvider="target">
+                                <rect key="frame" x="7.5" y="60" width="360" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ohf-xb-EKE">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
+                                            <color key="backgroundColor" red="0.72549019607843135" green="0.82352941176470584" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" red="0.72549019607843135" green="0.82352941176470584" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Ohf-xb-EKE" firstAttribute="top" secondItem="H9S-dF-vz7" secondAttribute="top" id="cdy-TZ-QWo"/>
+                                    <constraint firstItem="Ohf-xb-EKE" firstAttribute="leading" secondItem="H9S-dF-vz7" secondAttribute="leading" id="k5k-jI-DKB"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ohf-xb-EKE" secondAttribute="trailing" id="uHV-ff-alr"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ohf-xb-EKE" secondAttribute="bottom" id="z8u-w3-vwV"/>
+                                </constraints>
+                                <size key="customSize" width="360" height="50"/>
+                                <connections>
+                                    <outlet property="textView" destination="Ohf-xb-EKE" id="4jX-cW-PH0"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Wr0-LA-v3W" id="hyZ-gX-OM9"/>
+                            <outlet property="delegate" destination="Wr0-LA-v3W" id="SjC-ZK-cgQ"/>
+                            <outletCollection property="gestureRecognizers" destination="U3w-aM-4eE" appends="YES" id="0fF-Uq-gGh"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iD2-jF-c8g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="U3w-aM-4eE">
+                    <connections>
+                        <action selector="tap:" destination="Wr0-LA-v3W" id="eIz-LQ-ZDt"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="969" y="-290"/>
         </scene>
     </scenes>
 </document>

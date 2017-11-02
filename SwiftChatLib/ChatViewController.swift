@@ -8,26 +8,36 @@
 
 import UIKit
 
+var AILogicForm: AILogic!
+
 class ChatViewController: UIViewController {
     
     @IBOutlet var textInputElement: TextInputView!
-    @IBOutlet weak var messengerView: MessengerCollectionView!
     @IBOutlet weak var messengerInputView: UIView!
     @IBOutlet weak var inputViewHeightConstraint: NSLayoutConstraint!
     
+    var messengerView: MessengerCollectionViewController!
     var elements: [InputType: MessengerInput] = [:]
     fileprivate var AI: AILogic!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         initMessengerView()
         initMessengerInputView()
-        AI = AILogic(chat: self)
-        AI.start()
+        AILogicForm.setChat(chat: self)
+        AILogicForm.start()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if let vc = segue.destination as? MessengerCollectionViewController,
+            segue.identifier == "ChatMessengerSegue" {
+            self.messengerView = vc
+        }
     }
     
     func initMessengerView() {
-        messengerView.behavoirdDelegate = self
+        messengerView.behaviorDelegate = self
     }
     
     func initMessengerInputView() {
