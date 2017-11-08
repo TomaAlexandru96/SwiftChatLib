@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -177,8 +178,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="240" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDu-X3-VX7">
-                            <rect key="frame" x="0.0" y="0.0" width="121" height="50"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDu-X3-VX7">
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
                             <color key="backgroundColor" red="0.0061151743866503239" green="0.69652301073074341" blue="0.99591559171676636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Left">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -187,8 +188,8 @@
                                 <action selector="leftPressed:" destination="7sw-Ay-jxM" eventType="touchUpInside" id="yqZ-xZ-6ol"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D96-gp-sNe">
-                            <rect key="frame" x="118" y="0.0" width="122" height="50"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D96-gp-sNe">
+                            <rect key="frame" x="120" y="0.0" width="120" height="50"/>
                             <color key="backgroundColor" red="0.0061151743869999999" green="0.6965230107" blue="0.99591559169999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Right">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -205,7 +206,9 @@
                         <constraint firstItem="Qnw-lx-MPm" firstAttribute="bottom" secondItem="vDu-X3-VX7" secondAttribute="bottom" id="ea8-mM-ve9"/>
                         <constraint firstItem="vDu-X3-VX7" firstAttribute="leading" secondItem="Qnw-lx-MPm" secondAttribute="leading" id="htw-2m-6e1"/>
                         <constraint firstItem="vDu-X3-VX7" firstAttribute="top" secondItem="Qnw-lx-MPm" secondAttribute="top" id="mbg-2y-Pxb"/>
+                        <constraint firstItem="D96-gp-sNe" firstAttribute="leading" secondItem="Qnw-lx-MPm" secondAttribute="centerX" id="pSN-nZ-209"/>
                         <constraint firstItem="D96-gp-sNe" firstAttribute="top" secondItem="Qnw-lx-MPm" secondAttribute="top" id="rrT-FS-Wh2"/>
+                        <constraint firstItem="Qnw-lx-MPm" firstAttribute="centerX" secondItem="vDu-X3-VX7" secondAttribute="trailing" id="taZ-nu-CsO"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="Qnw-lx-MPm"/>
                     <connections>
