@@ -12,6 +12,7 @@ var AILogicForm: AILogic!
 
 class ChatViewController: UIViewController {
     
+    @IBOutlet var twoButtonsView: TwoButtonsInputView!
     @IBOutlet var searchSelectInputView: SearchSelectInputView!
     @IBOutlet var selectInputView: SelectInputView!
     @IBOutlet var textInputElement: TextInputView!
@@ -47,7 +48,8 @@ class ChatViewController: UIViewController {
         elements = [
             .TextInput: textInputElement,
             .SelectInput: selectInputView,
-            .SearchSelectInput: searchSelectInputView
+            .SearchSelectInput: searchSelectInputView,
+            .TwoButtonsInput: twoButtonsView
         ]
         _ = changeInputView(to: .TextInput)
     }
@@ -62,10 +64,12 @@ class ChatViewController: UIViewController {
         guard let inputView = elements[inputViewType] else {
             DispatchQueue.main.async {
                 self.messengerInputView.subviews.forEach { $0.removeFromSuperview() }
+                self.inputViewHeightConstraint.constant = 0
             }
             return nil
         }
         DispatchQueue.main.async {
+            self.messengerInputView.subviews.forEach { $0.removeFromSuperview() }
             self.messengerInputView.addSubview(inputView)
             inputView.setup(delegate: self)
             inputView.frame = CGRect(x: inputView.frame.origin.x, y: inputView.frame.origin.y, width: self.messengerInputView.frame.width, height: inputView.frame.height)

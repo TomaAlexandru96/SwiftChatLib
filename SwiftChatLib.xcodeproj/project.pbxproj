@@ -27,6 +27,7 @@
 		22CF50831FB3224D0067A093 /* SearchSelectInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF50821FB3224D0067A093 /* SearchSelectInputView.swift */; };
 		22CF50851FB32AF30067A093 /* CustomTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF50841FB32AF30067A093 /* CustomTextInput.swift */; };
 		22CF50871FB32E590067A093 /* CustomSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF50861FB32E590067A093 /* CustomSelectInput.swift */; };
+		22D24AFA1FB374A700614B75 /* TwoButtonsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D24AF91FB374A700614B75 /* TwoButtonsInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		22CF50821FB3224D0067A093 /* SearchSelectInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSelectInputView.swift; sourceTree = "<group>"; };
 		22CF50841FB32AF30067A093 /* CustomTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextInput.swift; sourceTree = "<group>"; };
 		22CF50861FB32E590067A093 /* CustomSelectInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectInput.swift; sourceTree = "<group>"; };
+		22D24AF91FB374A700614B75 /* TwoButtonsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoButtonsInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				22CF50821FB3224D0067A093 /* SearchSelectInputView.swift */,
 				22CF50801FB316360067A093 /* SelectInputView.swift */,
 				22CA6C1B1FA9F55000EAF761 /* TextInputView.swift */,
+				22D24AF91FB374A700614B75 /* TwoButtonsInputView.swift */,
 				22CF50841FB32AF30067A093 /* CustomTextInput.swift */,
 				22CF50861FB32E590067A093 /* CustomSelectInput.swift */,
 			);
@@ -327,6 +330,7 @@
 				227AEDAC1FAA39CE001B7202 /* Message.swift in Sources */,
 				22CF50811FB316360067A093 /* SelectInputView.swift in Sources */,
 				22CF50871FB32E590067A093 /* CustomSelectInput.swift in Sources */,
+				22D24AFA1FB374A700614B75 /* TwoButtonsInputView.swift in Sources */,
 				224069811FAA1E810086C8BD /* InputType.swift in Sources */,
 				22CA6C1C1FA9F55000EAF761 /* TextInputView.swift in Sources */,
 			);

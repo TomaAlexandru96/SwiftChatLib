@@ -168,14 +168,14 @@ class QuoteAI: AILogic {
             
             form.type = (Question(AI: self)
                 .withMessage(message: TextMessage(content: "Awesome name! is \(form.petName) a dog or a cat?", from: .Other))
-                .withInput(type: .SelectInput)
+                .withInput(type: .TwoButtonsInput)
                 .withSelectData(data: [("Dog", "Dog"), ("Cat", "Cat")])
                 .start() as! TextMessage).content
             
             form.gender = (Question(AI: self)
                 .withMessage(message: TextMessage(content: "And is \(form.petName) a girl or a boy?", from: .Other))
                 .withInput(type: .TextInput)
-                .withInput(type: .SelectInput)
+                .withInput(type: .TwoButtonsInput)
                 .withSelectData(data: [("Boy", "Boy"), ("Girl", "Girl")])
                 .start() as! TextMessage).content
             
