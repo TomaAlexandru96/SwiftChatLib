@@ -23,4 +23,5 @@ class MessengerInput: UIView {
     // to be overriden by children
     func hideKeyboard() {}
     func loadData(data: [(String, String)]) {}
+    func setBeforeSearch(beforeSearch: @escaping (_ query: String) -> Void) {}
 }

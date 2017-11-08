@@ -55,44 +55,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hla-gR-Xxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="jLZ-oZ-dvv" userLabel="Select Input View" customClass="SelectInputView" customModule="SwiftChatLib" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYw-cf-d6k">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
-                            <color key="backgroundColor" red="0.0061151743866503239" green="0.69652301073074341" blue="0.99591559171676636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="lLk-PO-t3R"/>
-                            </constraints>
-                            <state key="normal" title="Send">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="pressedSend:" destination="jLZ-oZ-dvv" eventType="touchUpInside" id="x67-QA-UVl"/>
-                            </connections>
-                        </button>
-                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Unl-HM-vGs" userLabel="Picker">
-                            <rect key="frame" x="0.0" y="32" width="240" height="100"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="100" id="dn4-Kr-jLc"/>
-                            </constraints>
-                        </pickerView>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="pYw-cf-d6k" firstAttribute="leading" secondItem="dNL-Wu-NCk" secondAttribute="leading" id="99S-gX-mvJ"/>
-                        <constraint firstItem="pYw-cf-d6k" firstAttribute="top" secondItem="dNL-Wu-NCk" secondAttribute="top" id="EaI-55-w2n"/>
-                        <constraint firstItem="dNL-Wu-NCk" firstAttribute="trailing" secondItem="pYw-cf-d6k" secondAttribute="trailing" id="PcP-hd-j0y"/>
-                        <constraint firstItem="Unl-HM-vGs" firstAttribute="leading" secondItem="jLZ-oZ-dvv" secondAttribute="leading" id="VzJ-rp-fWb"/>
-                        <constraint firstItem="Unl-HM-vGs" firstAttribute="firstBaseline" secondItem="pYw-cf-d6k" secondAttribute="baseline" constant="11.5" symbolType="layoutAnchor" id="lSd-1m-wEM"/>
-                        <constraint firstAttribute="trailing" secondItem="Unl-HM-vGs" secondAttribute="trailing" id="mSH-Bm-euz"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="dNL-Wu-NCk"/>
-                    <connections>
-                        <outlet property="picker" destination="Unl-HM-vGs" id="u4u-Lj-X4r"/>
-                    </connections>
-                </view>
                 <view contentMode="scaleToFill" id="vA4-yh-TBI" userLabel="Search Select Input View" customClass="SearchSelectInputView" customModule="SwiftChatLib" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="160"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -110,7 +72,7 @@
                                 <action selector="pressedSend:" destination="vA4-yh-TBI" eventType="touchUpInside" id="UhK-av-vUY"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2dH-9V-TSJ" userLabel="Search">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2dH-9V-TSJ" userLabel="Search" customClass="CustomTextInput" customModule="SwiftChatLib" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="130" width="240" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="yQQ-5C-rsc"/>
@@ -118,11 +80,8 @@
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <action selector="startTyping:" destination="vA4-yh-TBI" eventType="editingDidEnd" id="sqD-Ea-HrX"/>
-                            </connections>
                         </textField>
-                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nzr-ka-7qE" userLabel="Picker">
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nzr-ka-7qE" userLabel="Picker" customClass="CustomSelectInput" customModule="SwiftChatLib" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="30" width="240" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="zBL-M5-dXs"/>
@@ -144,19 +103,23 @@
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="Oli-vD-Aai"/>
                     <connections>
-                        <outlet property="picker" destination="Nzr-ka-7qE" id="zs3-H6-3FZ"/>
+                        <outlet property="picker" destination="Nzr-ka-7qE" id="Gdb-jA-Dlo"/>
                         <outlet property="searchField" destination="2dH-9V-TSJ" id="B6S-zJ-Cxu"/>
+                        <outlet property="sendButton" destination="Ern-eH-kaQ" id="zMO-cT-XXJ"/>
                     </connections>
                 </view>
                 <view tag="1" contentMode="scaleToFill" restorationIdentifier="TextInputView" id="Xyt-2c-fU8" userLabel="Text Input View" customClass="TextInputView" customModule="SwiftChatLib" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say something" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W2d-g4-Cqi" userLabel="Text Input Field">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say something" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W2d-g4-Cqi" userLabel="Text Input Field" customClass="CustomTextInput" customModule="SwiftChatLib" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
+                            <connections>
+                                <action selector="pressedSend:" destination="Xyt-2c-fU8" eventType="primaryActionTriggered" id="DnN-n3-nvd"/>
+                            </connections>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -168,7 +131,45 @@
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="RFd-jU-ihN"/>
                     <connections>
-                        <outlet property="inputField" destination="W2d-g4-Cqi" id="2KI-9W-ffR"/>
+                        <outlet property="inputField" destination="W2d-g4-Cqi" id="Hp6-vg-SPD"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" id="jLZ-oZ-dvv" userLabel="Select Input View" customClass="SelectInputView" customModule="SwiftChatLib" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYw-cf-d6k">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
+                            <color key="backgroundColor" red="0.0061151743866503239" green="0.69652301073074341" blue="0.99591559171676636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="lLk-PO-t3R"/>
+                            </constraints>
+                            <state key="normal" title="Send">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="pressedSend:" destination="jLZ-oZ-dvv" eventType="touchUpInside" id="x67-QA-UVl"/>
+                            </connections>
+                        </button>
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Unl-HM-vGs" userLabel="Picker" customClass="CustomSelectInput" customModule="SwiftChatLib" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="32" width="240" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="dn4-Kr-jLc"/>
+                            </constraints>
+                        </pickerView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="pYw-cf-d6k" firstAttribute="leading" secondItem="dNL-Wu-NCk" secondAttribute="leading" id="99S-gX-mvJ"/>
+                        <constraint firstItem="pYw-cf-d6k" firstAttribute="top" secondItem="dNL-Wu-NCk" secondAttribute="top" id="EaI-55-w2n"/>
+                        <constraint firstItem="dNL-Wu-NCk" firstAttribute="trailing" secondItem="pYw-cf-d6k" secondAttribute="trailing" id="PcP-hd-j0y"/>
+                        <constraint firstItem="Unl-HM-vGs" firstAttribute="leading" secondItem="jLZ-oZ-dvv" secondAttribute="leading" id="VzJ-rp-fWb"/>
+                        <constraint firstItem="Unl-HM-vGs" firstAttribute="firstBaseline" secondItem="pYw-cf-d6k" secondAttribute="baseline" constant="11.5" symbolType="layoutAnchor" id="lSd-1m-wEM"/>
+                        <constraint firstAttribute="trailing" secondItem="Unl-HM-vGs" secondAttribute="trailing" id="mSH-Bm-euz"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="dNL-Wu-NCk"/>
+                    <connections>
+                        <outlet property="picker" destination="Unl-HM-vGs" id="rfl-cg-oHX"/>
                     </connections>
                 </view>
             </objects>
@@ -227,7 +228,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ohf-xb-EKE">
+                                        <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlg-sw-H5d" userLabel="Touch Mask" customClass="RightCellTouchMask" customModule="SwiftChatLib" customModuleProvider="target">
+                                            <rect key="frame" x="-0.5" y="0.0" width="360" height="0.0"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <bool key="isElement" value="YES"/>
+                                            </accessibility>
+                                        </view>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ohf-xb-EKE" customClass="DeletableTextView" customModule="SwiftChatLib" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="360" height="0.0"/>
                                             <color key="backgroundColor" red="0.72549019607843135" green="0.82352941176470584" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -240,14 +248,19 @@
                                 </view>
                                 <color key="backgroundColor" red="0.72549019607843135" green="0.82352941176470584" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="xlg-sw-H5d" secondAttribute="trailing" id="BoS-Le-mRg"/>
+                                    <constraint firstAttribute="bottom" secondItem="xlg-sw-H5d" secondAttribute="bottom" id="LdD-MC-Njb"/>
+                                    <constraint firstItem="xlg-sw-H5d" firstAttribute="leading" secondItem="H9S-dF-vz7" secondAttribute="leading" id="Nvt-fQ-zWB"/>
                                     <constraint firstItem="Ohf-xb-EKE" firstAttribute="top" secondItem="H9S-dF-vz7" secondAttribute="top" id="cdy-TZ-QWo"/>
                                     <constraint firstItem="Ohf-xb-EKE" firstAttribute="leading" secondItem="H9S-dF-vz7" secondAttribute="leading" id="k5k-jI-DKB"/>
                                     <constraint firstAttribute="trailing" secondItem="Ohf-xb-EKE" secondAttribute="trailing" id="uHV-ff-alr"/>
+                                    <constraint firstItem="xlg-sw-H5d" firstAttribute="top" secondItem="H9S-dF-vz7" secondAttribute="top" id="wYb-D4-aDY"/>
                                     <constraint firstAttribute="bottom" secondItem="Ohf-xb-EKE" secondAttribute="bottom" id="z8u-w3-vwV"/>
                                 </constraints>
                                 <size key="customSize" width="360" height="50"/>
                                 <connections>
                                     <outlet property="textView" destination="Ohf-xb-EKE" id="4jX-cW-PH0"/>
+                                    <outlet property="touchMask" destination="xlg-sw-H5d" id="I8h-dq-N14"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

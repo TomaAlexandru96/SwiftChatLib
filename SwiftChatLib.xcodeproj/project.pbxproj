@@ -25,6 +25,8 @@
 		22CA6C1C1FA9F55000EAF761 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA6C1B1FA9F55000EAF761 /* TextInputView.swift */; };
 		22CF50811FB316360067A093 /* SelectInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF50801FB316360067A093 /* SelectInputView.swift */; };
 		22CF50831FB3224D0067A093 /* SearchSelectInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF50821FB3224D0067A093 /* SearchSelectInputView.swift */; };
+		22CF50851FB32AF30067A093 /* CustomTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF50841FB32AF30067A093 /* CustomTextInput.swift */; };
+		22CF50871FB32E590067A093 /* CustomSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF50861FB32E590067A093 /* CustomSelectInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		22CA6C1B1FA9F55000EAF761 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 		22CF50801FB316360067A093 /* SelectInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInputView.swift; sourceTree = "<group>"; };
 		22CF50821FB3224D0067A093 /* SearchSelectInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSelectInputView.swift; sourceTree = "<group>"; };
+		22CF50841FB32AF30067A093 /* CustomTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextInput.swift; sourceTree = "<group>"; };
+		22CF50861FB32E590067A093 /* CustomSelectInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,12 +168,14 @@
 		22CA6C201FA9FA8F00EAF761 /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
+				224069801FAA1E810086C8BD /* InputType.swift */,
+				227AEDA71FAA2B26001B7202 /* MessengerInputBehaviourDelegate.swift */,
+				2240697E1FAA0B6D0086C8BD /* MessengerInput.swift */,
 				22CF50821FB3224D0067A093 /* SearchSelectInputView.swift */,
 				22CF50801FB316360067A093 /* SelectInputView.swift */,
 				22CA6C1B1FA9F55000EAF761 /* TextInputView.swift */,
-				2240697E1FAA0B6D0086C8BD /* MessengerInput.swift */,
-				224069801FAA1E810086C8BD /* InputType.swift */,
-				227AEDA71FAA2B26001B7202 /* MessengerInputBehaviourDelegate.swift */,
+				22CF50841FB32AF30067A093 /* CustomTextInput.swift */,
+				22CF50861FB32E590067A093 /* CustomSelectInput.swift */,
 			);
 			path = Inputs;
 			sourceTree = "<group>";
@@ -313,12 +319,14 @@
 				22CA6C181FA9F50A00EAF761 /* MessengerCollectionView.swift in Sources */,
 				2278BE1B1FA9E7160015FD73 /* ChatViewController.swift in Sources */,
 				224069831FAA22BC0086C8BD /* MessengerBehavoirDelegate.swift in Sources */,
+				22CF50851FB32AF30067A093 /* CustomTextInput.swift in Sources */,
 				227AEDAA1FAA385A001B7202 /* LeftMessengerCell.swift in Sources */,
 				2278BE191FA9E7160015FD73 /* AppDelegate.swift in Sources */,
 				220B70E81FAA56660025DD20 /* AILogic.swift in Sources */,
 				22CF50831FB3224D0067A093 /* SearchSelectInputView.swift in Sources */,
 				227AEDAC1FAA39CE001B7202 /* Message.swift in Sources */,
 				22CF50811FB316360067A093 /* SelectInputView.swift in Sources */,
+				22CF50871FB32E590067A093 /* CustomSelectInput.swift in Sources */,
 				224069811FAA1E810086C8BD /* InputType.swift in Sources */,
 				22CA6C1C1FA9F55000EAF761 /* TextInputView.swift in Sources */,
 			);

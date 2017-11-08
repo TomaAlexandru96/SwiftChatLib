@@ -11,4 +11,5 @@ import Foundation
 protocol MessengerBehavoirDelegate {
     func hideKeyboard()
     func receivedMessage(message: GenericMessage)
+    func deletedLastMessageFromMe()
 }

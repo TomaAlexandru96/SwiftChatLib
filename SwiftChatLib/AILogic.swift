@@ -11,6 +11,7 @@ import Foundation
 class AILogic {
     
     fileprivate var chat: ChatViewController!
+    fileprivate let NONE: Double = 0
     fileprivate let SHORT: Double = 0.2
     fileprivate let LONG: Double = 0.5
     fileprivate var inputSema: DispatchSemaphore = DispatchSemaphore(value: 0)
@@ -37,6 +38,7 @@ class AILogic {
     
     func startAI() {
         formQueue.async {
+            self.setup()
             self.start()
         }
     }
@@ -53,32 +55,80 @@ class AILogic {
     fileprivate func setup() {}
     fileprivate func start() {}
     func restart() {}
+    func deleteLastAnswer() -> Int {return 2}
 }
 
 class QuoteAI: AILogic {
     
-    fileprivate var form: QuoteForm!
+    fileprivate var forms: [QuoteForm] = []
     
     override func setup() {
         super.setup()
-        self.form = QuoteForm()
+    }
+    
+    // returns the number of cells to be deleted
+    override func deleteLastAnswer() -> Int {
+        return 2
     }
     
     override func start() {
         super.start()
-        chat.sendInput(message: TextMessage(content: "Hello", from: .Other))
+        chat.sendInput(message: TextMessage(content: "Hi there! Let’s get you a price as quickly as we can... You only need to answer 7 quick questions about your pet.", from: .Other))
         delay(time: LONG)
-        self.chat.sendInput(message: TextMessage(content: "How are you?", from: .Other))
-        /*let picker = self.chat.changeInputView(to: InputType.SelectInput)
-        picker.loadData(data: [("Male", "Male"), ("Female", "Female")])
-        print((self.waitForInput() as! TextMessage).content)
-        let picker2 = self.chat.changeInputView(to: InputType.SelectInput)
-        var data: [(String, String)] = []
-        for i in 0..<1000 {
-            data.append((String(i), String(i)))
+        chat.sendInput(message: TextMessage(content: "How many pets are you looking to insure?", from: .Other))
+        let pickerPets = chat.changeInputView(to: InputType.SelectInput)
+        pickerPets.loadData(data: [("1", "1"), ("2", "2")])
+        
+        let pets = Int((waitForInput() as! TextMessage).content)!
+        for _ in 0..<pets {
+            let form = QuoteForm()
+            delay(time: SHORT)
+            _ = chat.changeInputView(to: .TextInput)
+            chat.sendInput(message: TextMessage(content: "Great, what is your pet’s name?", from: .Other))
+            form.petName = (waitForInput() as! TextMessage).content
+            
+            delay(time: SHORT)
+            chat.sendInput(message: TextMessage(content: "Awesome name! is \(form.petName) a dog or a cat?", from: .Other))
+            let pickerType = chat.changeInputView(to: .SelectInput)
+            pickerType.loadData(data: [("Cat", "Cat"), ("Dog", "Dog")])
+            form.type = PetType(rawValue: (waitForInput() as! TextMessage).content)!
+            
+            delay(time: SHORT)
+            chat.sendInput(message: TextMessage(content: "And is \(form.petName) a girl or a boy?", from: .Other))
+            let pickerGender = chat.changeInputView(to: .SelectInput)
+            pickerGender.loadData(data: [("Female", "Female"), ("Male", "Male")])
+            form.gender = PetGender(rawValue: (waitForInput() as! TextMessage).content)!
+            
+            delay(time: SHORT)
+            chat.sendInput(message: TextMessage(content: "How old is \(form.petName)?", from: .Other))
+            let pickerAge = chat.changeInputView(to: .SelectInput)
+            pickerAge.loadData(data: [
+                ("<1 year", "<1 year"),
+                ("1-3 years", "1-3 years"),
+                ("3-5 years", "3-5 years"),
+                ("5-8 years", "5-8 years"),
+                ("8+ years", "8+ years")])
+            form.age = PetAge(rawValue: (waitForInput() as! TextMessage).content)!
+            
+            delay(time: SHORT)
+            chat.sendInput(message: TextMessage(content: "What type of breed?", from: .Other))
+            let pickerBreed = chat.changeInputView(to: .SearchSelectInput)
+            pickerBreed.loadData(data: [])
+            form.breed = (waitForInput() as! TextMessage).content
+            
+            delay(time: SHORT)
+            chat.sendInput(message: TextMessage(content: "Lastly, where do you and \(form.petName) live?", from: .Other))
+            let pickerAddress = chat.changeInputView(to: .SearchSelectInput)
+            pickerAddress.loadData(data: [])
+            form.address = (waitForInput() as! TextMessage).content
+            
+            delay(time: SHORT)
+            chat.sendInput(message: TextMessage(content: "Great, I’ve got everything I need. You ready to see your price now.", from: .Other))
+            chat.sendInput(message: TextMessage(content: form.getDescription(), from: .Other))
+            
+            self.chat.sendInput(message: TextMessage(content: "Pet: " + form.getDescription(), from: .Other))
+            forms.append(form)
         }
-        picker2.loadData(data: data)
-        print((self.waitForInput() as! TextMessage).content)*/
     }
     
 }
@@ -111,16 +161,15 @@ enum PetAge: String {
 }
 
 class QuoteForm {
-    var petName: String!
-    var type: PetType!
-    var gender: PetGender!
-    var breed: String!
-    var age: PetAge!
-    var address: String!
+    var petName: String = ""
+    var type: PetType = .Cat
+    var gender: PetGender = .Male
+    var breed: String = ""
+    var age: PetAge = .LessOneYear
+    var address: String = ""
     
-    func printForm() {
-        let description = "\(petName), \(type), \(gender), \(breed), \(age), \(address)"
-        print(description)
+    func getDescription() -> String{
+        return "\(petName), \(type), \(gender), \(breed), \(age), \(address)"
     }
 }
 

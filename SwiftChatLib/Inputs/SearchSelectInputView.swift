@@ -10,44 +10,46 @@ import UIKit
 
 class SearchSelectInputView: MessengerInput {
     
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var picker: CustomSelectInput!
     @IBOutlet weak var searchField: UITextField!
-    @IBOutlet weak var picker: UIPickerView!
-    fileprivate var data: [(String, String)] = []
-    fileprivate var selected: Int = -1
+    fileprivate var allData: [(String, String)] = []
+    fileprivate var beforeSearch: (_ query: String) -> Void = {_ in }
     
     override func loadData(data: [(String, String)]) {
-        self.data = data
+        allData = data
+        picker.loadData(data: data)
         DispatchQueue.main.async {
-            self.picker.dataSource = self
-            self.picker.delegate = self
+            self.picker.dataSource = self.picker
+            self.picker.delegate = self.picker
+            self.searchField.addTarget(self, action: #selector(self.startedTyping), for: .editingChanged)
         }
+        sendButton.isEnabled = !allData.isEmpty
+    }
+    
+    override func setBeforeSearch(beforeSearch: @escaping (_ query: String) -> Void) {
+        self.beforeSearch = beforeSearch
     }
     
     @IBAction func pressedSend(_ sender: UIButton) {
-        behavoirDelegate.sendInput(message: TextMessage(content: data[selected].1, from: .Me))
+        behavoirDelegate.sendInput(message: TextMessage(content: picker.getSelected().1, from: .Me))
     }
     
-    @IBAction func startTyping(_ sender: Any) {
-    }
-}
-
-extension SearchSelectInputView: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return data.count
-    }
-}
-
-extension SearchSelectInputView: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return data[row].0
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selected = row
+    @objc func startedTyping() {
+        guard let query = searchField.text else {
+            return
+        }
+        
+        beforeSearch(query)
+        
+        var newData: [(String, String)] = []
+        allData.forEach({
+            if $0.0.hasPrefix(query) {
+                newData.append($0)
+            }
+        })
+        picker.loadData(data: newData)
+        sendButton.isEnabled = !newData.isEmpty
     }
 }
 

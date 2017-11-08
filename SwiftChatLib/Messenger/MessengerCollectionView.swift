@@ -41,6 +41,8 @@ extension MessengerCollectionViewController {
         data.append(message)
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
+            self.collectionView?.collectionViewLayout.invalidateLayout()
+            self.collectionView?.scrollToItem(at: IndexPath(item: self.data.count - 1, section: 0), at: UICollectionViewScrollPosition.bottom, animated: true)
         }
         behaviorDelegate.receivedMessage(message: message)
     }
@@ -72,9 +74,27 @@ extension MessengerCollectionViewController {
                 fatalError("Should cast fine")
             }
             reusableCell.setText(text: textContent)
+            reusableCell.setDelegate(delegate: behaviorDelegate)
+            reusableCell.setLast(isLast: isLastFromMe(index: indexPath.item))
         }
         
         return reusableCell
+    }
+    
+    fileprivate func isLastFromMe(index: Int) -> Bool {
+        for i in index+1..<data.count {
+            if data[i].from == .Me {
+                return false
+            }
+        }
+        return true;
+    }
+    
+    func deleteLastCells(nr: Int) {
+        _ = data.removeLast(nr)
+        DispatchQueue.main.async {
+            self.collectionView?.reloadData()
+        }
     }
     
 }

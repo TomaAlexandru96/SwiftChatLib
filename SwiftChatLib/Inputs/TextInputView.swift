@@ -10,37 +10,12 @@ import UIKit
 
 class TextInputView: MessengerInput {
     
-    @IBOutlet weak var inputField: UITextField!
-    
+    @IBOutlet weak var inputField: CustomTextInput!
     let type = InputType.TextInput
     
     override func setup(delegate: MessengerInputBehaviourDelegate) {
         super.setup(delegate: delegate)
-        
-        inputField.delegate = self
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.onKeyboardWillHide),
-            name: NSNotification.Name.UIKeyboardWillHide,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.onKeyboardWillShow),
-            name: NSNotification.Name.UIKeyboardWillShow,
-            object: nil
-        )
-    }
-    
-    @objc func onKeyboardWillHide(_ notification: Notification) {
-        behavoirDelegate.keyboardDisapeared()
-    }
-    
-    @objc func onKeyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            behavoirDelegate.keyboardAppeared(keyboardHeight: keyboardRectangle.height)
-        }
+        inputField.setup(delegate: delegate)
     }
     
     override func hideKeyboard() {
@@ -48,17 +23,8 @@ class TextInputView: MessengerInput {
         inputField.resignFirstResponder()
     }
     
-}
-
-extension TextInputView: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let inputText = textField.text else {
-            return false
-        }
-        behavoirDelegate.sendInput(message: TextMessage(content: inputText, from: .Me))
-        textField.text = ""
-        return true
+    @IBAction func pressedSend(_ sender: Any) {
+        inputField.send()
     }
     
 }

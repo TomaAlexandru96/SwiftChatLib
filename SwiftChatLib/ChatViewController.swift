@@ -53,8 +53,9 @@ class ChatViewController: UIViewController {
     }
     
     fileprivate func initAI() {
-        AILogicForm.setChat(chat: self)
-        AILogicForm.startAI()
+        AI = AILogicForm
+        AI.setChat(chat: self)
+        AI.startAI()
     }
     
     func changeInputView(to inputViewType: InputType) -> MessengerInput {
@@ -75,6 +76,10 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController: MessengerBehavoirDelegate {
     
+    func deletedLastMessageFromMe() {
+        messengerView.deleteLastCells(nr: AI.deleteLastAnswer())
+    }
+    
     func hideKeyboard() {
         messengerInputView.subviews.forEach({
             guard let messengerInput = $0 as? MessengerInput else {
@@ -86,7 +91,7 @@ extension ChatViewController: MessengerBehavoirDelegate {
     
     func receivedMessage(message: GenericMessage) {
         if (message.from == .Me) {
-            AILogicForm.recordInput(message: message)
+            AI.recordInput(message: message)
         }
     }
     
