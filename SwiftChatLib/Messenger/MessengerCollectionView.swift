@@ -33,6 +33,10 @@ class MessengerCollectionViewController: UICollectionViewController {
 
 extension MessengerCollectionViewController {
     
+    func reset() {
+        // TODO
+    }
+    
     func sendMessage(message: GenericMessage) {
         data.append(message)
         DispatchQueue.main.async {

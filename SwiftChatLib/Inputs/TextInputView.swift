@@ -33,13 +33,13 @@ class TextInputView: MessengerInput {
     }
     
     @objc func onKeyboardWillHide(_ notification: Notification) {
-        behavoirDelegate.translateY(to: 0)
+        behavoirDelegate.keyboardDisapeared()
     }
     
     @objc func onKeyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
-            behavoirDelegate.translateY(to: -keyboardRectangle.height)
+            behavoirDelegate.keyboardAppeared(keyboardHeight: keyboardRectangle.height)
         }
     }
     

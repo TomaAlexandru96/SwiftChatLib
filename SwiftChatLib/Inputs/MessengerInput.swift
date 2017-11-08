@@ -20,6 +20,7 @@ class MessengerInput: UIView {
         behavoirDelegate = delegate
     }
     
+    // to be overriden by children
     func hideKeyboard() {}
-    
+    func loadData(data: [(String, String)]) {}
 }

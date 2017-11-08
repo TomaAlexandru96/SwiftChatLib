@@ -69,7 +69,16 @@ class QuoteAI: AILogic {
         chat.sendInput(message: TextMessage(content: "Hello", from: .Other))
         delay(time: LONG)
         self.chat.sendInput(message: TextMessage(content: "How are you?", from: .Other))
+        /*let picker = self.chat.changeInputView(to: InputType.SelectInput)
+        picker.loadData(data: [("Male", "Male"), ("Female", "Female")])
         print((self.waitForInput() as! TextMessage).content)
+        let picker2 = self.chat.changeInputView(to: InputType.SelectInput)
+        var data: [(String, String)] = []
+        for i in 0..<1000 {
+            data.append((String(i), String(i)))
+        }
+        picker2.loadData(data: data)
+        print((self.waitForInput() as! TextMessage).content)*/
     }
     
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 protocol MessengerInputBehaviourDelegate {
-    func translateY(to: CGFloat)
+    func keyboardAppeared(keyboardHeight: CGFloat)
+    func keyboardDisapeared()
     func sendInput(message: GenericMessage)
 }

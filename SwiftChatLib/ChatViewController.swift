@@ -12,6 +12,8 @@ var AILogicForm: AILogic!
 
 class ChatViewController: UIViewController {
     
+    @IBOutlet var searchSelectInputView: SearchSelectInputView!
+    @IBOutlet var selectInputView: SelectInputView!
     @IBOutlet var textInputElement: TextInputView!
     @IBOutlet weak var messengerInputView: UIView!
     @IBOutlet weak var inputViewHeightConstraint: NSLayoutConstraint!
@@ -19,9 +21,11 @@ class ChatViewController: UIViewController {
     var messengerView: MessengerCollectionViewController!
     var elements: [InputType: MessengerInput] = [:]
     fileprivate var AI: AILogic!
+    fileprivate var originalViewHeight: CGFloat = 0
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        originalViewHeight = view.frame.height
         initMessengerView()
         initMessengerInputView()
         initAI()
@@ -35,30 +39,36 @@ class ChatViewController: UIViewController {
         }
     }
     
-    func initMessengerView() {
+    fileprivate func initMessengerView() {
         messengerView.behaviorDelegate = self
     }
     
-    func initMessengerInputView() {
+    fileprivate func initMessengerInputView() {
         elements = [
-            .TextInput: textInputElement
+            .TextInput: textInputElement,
+            .SelectInput: selectInputView,
+            .SearchSelectInput: searchSelectInputView
         ]
-        changeInputView(to: .TextInput)
+        _ = changeInputView(to: .TextInput)
     }
     
-    func initAI() {
+    fileprivate func initAI() {
         AILogicForm.setChat(chat: self)
         AILogicForm.startAI()
     }
     
-    func changeInputView(to inputViewType: InputType) {
+    func changeInputView(to inputViewType: InputType) -> MessengerInput {
         guard let inputView = elements[inputViewType] else {
-            fatalError("Should be able to find the enum in the dictionary")
+            fatalError("Should be able to find the inputViewType in the dictionary")
         }
-        messengerInputView.subviews.forEach { $0.removeFromSuperview() }
-        messengerInputView.addSubview(inputView)
-        inputView.setup(delegate: self)
-        inputViewHeightConstraint.constant = inputView.frame.height
+        DispatchQueue.main.async {
+            self.messengerInputView.subviews.forEach { $0.removeFromSuperview() }
+            self.messengerInputView.addSubview(inputView)
+            inputView.setup(delegate: self)
+            inputView.frame = CGRect(x: inputView.frame.origin.x, y: inputView.frame.origin.y, width: self.messengerInputView.frame.width, height: inputView.frame.height)
+            self.inputViewHeightConstraint.constant = inputView.frame.height
+        }
+        return inputView
     }
     
 }
@@ -84,12 +94,17 @@ extension ChatViewController: MessengerBehavoirDelegate {
 
 extension ChatViewController: MessengerInputBehaviourDelegate {
     
+    func keyboardDisapeared() {
+        view.frame = CGRect(origin: view.frame.origin, size: CGSize(width: view.frame.width, height: originalViewHeight))
+    }
+    
     func sendInput(message: GenericMessage) {
         messengerView.sendMessage(message: message)
     }
     
-    func translateY(to: CGFloat) {
-        view.frame.origin.y = to
+    func keyboardAppeared(keyboardHeight: CGFloat) {
+        let newHeight = originalViewHeight - keyboardHeight
+        view.frame = CGRect(origin: view.frame.origin, size: CGSize(width: view.frame.width, height: newHeight))
     }
     
 }
