@@ -24,7 +24,9 @@ class SearchSelectInputView: MessengerInput {
             self.picker.delegate = self.picker
             self.searchField.addTarget(self, action: #selector(self.startedTyping), for: .editingChanged)
         }
-        sendButton.isEnabled = !allData.isEmpty
+        DispatchQueue.main.async {
+            self.sendButton.isEnabled = !self.allData.isEmpty
+        }
     }
     
     override func setBeforeSearch(beforeSearch: @escaping (_ query: String) -> Void) {

@@ -20,7 +20,9 @@ class TextInputView: MessengerInput {
     
     override func hideKeyboard() {
         super.hideKeyboard()
-        inputField.resignFirstResponder()
+        DispatchQueue.main.async {
+            self.inputField.resignFirstResponder()
+        }
     }
     
     @IBAction func pressedSend(_ sender: Any) {

@@ -34,7 +34,11 @@ class MessengerCollectionViewController: UICollectionViewController {
 extension MessengerCollectionViewController {
     
     func reset() {
-        // TODO
+        data = []
+        DispatchQueue.main.async {
+            self.collectionView?.reloadData()
+            self.collectionView?.collectionViewLayout.invalidateLayout()
+        }
     }
     
     func sendMessage(message: GenericMessage) {

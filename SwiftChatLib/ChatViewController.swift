@@ -58,18 +58,24 @@ class ChatViewController: UIViewController {
         AI.startAI()
     }
     
-    func changeInputView(to inputViewType: InputType) -> MessengerInput {
+    func changeInputView(to inputViewType: InputType) -> MessengerInput? {
         guard let inputView = elements[inputViewType] else {
-            fatalError("Should be able to find the inputViewType in the dictionary")
+            DispatchQueue.main.async {
+                self.messengerInputView.subviews.forEach { $0.removeFromSuperview() }
+            }
+            return nil
         }
         DispatchQueue.main.async {
-            self.messengerInputView.subviews.forEach { $0.removeFromSuperview() }
             self.messengerInputView.addSubview(inputView)
             inputView.setup(delegate: self)
             inputView.frame = CGRect(x: inputView.frame.origin.x, y: inputView.frame.origin.y, width: self.messengerInputView.frame.width, height: inputView.frame.height)
             self.inputViewHeightConstraint.constant = inputView.frame.height
         }
         return inputView
+    }
+    
+    func restart() {
+        messengerView.reset()
     }
     
 }

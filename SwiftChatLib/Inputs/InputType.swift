@@ -12,4 +12,5 @@ enum InputType {
     case TextInput
     case SelectInput
     case SearchSelectInput
+    case None
 }

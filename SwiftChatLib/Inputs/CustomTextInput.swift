@@ -41,7 +41,7 @@ class CustomTextInput: UITextField {
     }
     
     func send() {
-        guard let text = text else {
+        guard let text = text, text != "" else {
             return
         }
         behavoirDelegate.sendInput(message: TextMessage(content: text, from: .Me))

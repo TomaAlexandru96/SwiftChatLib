@@ -38,7 +38,6 @@ class AILogic {
     
     func startAI() {
         formQueue.async {
-            self.setup()
             self.start()
         }
     }
@@ -51,82 +50,171 @@ class AILogic {
         timeSema.wait()
     }
     
+    func restart() {
+        chat.restart()
+    }
+    
     // to be overriden by children
-    fileprivate func setup() {}
     fileprivate func start() {}
-    func restart() {}
+    // returns the number of cells to be deleted
     func deleteLastAnswer() -> Int {return 2}
+}
+
+class Question {
+    
+    fileprivate let AI: AILogic
+    fileprivate var messengerInput: MessengerInput?
+    var message: GenericMessage?
+    var input: InputType = .None
+    var selectData: [(String, String)]?
+    var hideKeyboardAfterInput: Bool = false
+    var beforeQueryFunction: (_ query: String) -> Void = {_ in }
+    
+    init(AI: AILogic) {
+        self.AI = AI
+    }
+    
+    func withMessage(message: GenericMessage) -> Question {
+        self.message = message
+        return self
+    }
+    
+    func withInput(type: InputType) -> Question {
+        self.input = type
+        return self
+    }
+    
+    func withSelectData(data: [(String, String)]) -> Question {
+        self.selectData = data
+        return self
+    }
+    
+    func withHideKeyboardAfterInput() -> Question {
+        self.hideKeyboardAfterInput = true
+        return self
+    }
+    
+    func withBeforeQueryFunction(closure: @escaping (_ question: Question, _ query: String) -> Void) ->           Question {
+        self.beforeQueryFunction = {query in closure(self, query)}
+        return self
+    }
+    
+    func display() {
+        if let message = message {
+            AI.chat.sendInput(message: message)
+        }
+        
+        messengerInput = AI.chat.changeInputView(to: input)
+        
+        if let selectData = selectData, let messengerInput = messengerInput {
+            messengerInput.loadData(data: selectData)
+        }
+        
+        if let messengerInput = messengerInput  {
+            messengerInput.setBeforeSearch(beforeSearch: beforeQueryFunction)
+        }
+    }
+    
+    func awaitAnswer() -> GenericMessage? {
+        guard let messengerInput = messengerInput else {
+            return nil
+        }
+        
+        let message = AI.waitForInput()
+        
+        if hideKeyboardAfterInput {
+            messengerInput.hideKeyboard()
+        }
+        
+        return message
+    }
+ 
+    func start() -> GenericMessage? {
+        display()
+        return awaitAnswer()
+    }
 }
 
 class QuoteAI: AILogic {
     
     fileprivate var forms: [QuoteForm] = []
     
-    override func setup() {
-        super.setup()
-    }
-    
-    // returns the number of cells to be deleted
     override func deleteLastAnswer() -> Int {
         return 2
     }
     
     override func start() {
         super.start()
-        chat.sendInput(message: TextMessage(content: "Hi there! Let’s get you a price as quickly as we can... You only need to answer 7 quick questions about your pet.", from: .Other))
-        delay(time: LONG)
-        chat.sendInput(message: TextMessage(content: "How many pets are you looking to insure?", from: .Other))
-        let pickerPets = chat.changeInputView(to: InputType.SelectInput)
-        pickerPets.loadData(data: [("1", "1"), ("2", "2")])
         
-        let pets = Int((waitForInput() as! TextMessage).content)!
-        for _ in 0..<pets {
+        var formsCount = 0
+        
+        _ = Question(AI: self)
+            .withMessage(message: TextMessage(content: "Hi there! Let’s get you a price as quickly as we can... You only need to answer 7 quick questions about your pet.", from: .Other))
+            .start()
+        formsCount = Int((Question(AI: self)
+            .withMessage(message: TextMessage(content: "How many pets are you looking to insure?", from: .Other))
+            .withInput(type: .SelectInput)
+            .withSelectData(data: [("1", "1"), ("2", "2")])
+            .start()! as! TextMessage).content)!
+        
+        for _ in 0..<formsCount {
             let form = QuoteForm()
-            delay(time: SHORT)
-            _ = chat.changeInputView(to: .TextInput)
-            chat.sendInput(message: TextMessage(content: "Great, what is your pet’s name?", from: .Other))
-            form.petName = (waitForInput() as! TextMessage).content
             
-            delay(time: SHORT)
-            chat.sendInput(message: TextMessage(content: "Awesome name! is \(form.petName) a dog or a cat?", from: .Other))
-            let pickerType = chat.changeInputView(to: .SelectInput)
-            pickerType.loadData(data: [("Cat", "Cat"), ("Dog", "Dog")])
-            form.type = PetType(rawValue: (waitForInput() as! TextMessage).content)!
+            form.petName = (Question(AI: self)
+                .withMessage(message: TextMessage(content: "Great, what is your pet’s name?", from: .Other))
+                .withInput(type: .TextInput)
+                .withHideKeyboardAfterInput()
+                .start() as! TextMessage).content
             
-            delay(time: SHORT)
-            chat.sendInput(message: TextMessage(content: "And is \(form.petName) a girl or a boy?", from: .Other))
-            let pickerGender = chat.changeInputView(to: .SelectInput)
-            pickerGender.loadData(data: [("Female", "Female"), ("Male", "Male")])
-            form.gender = PetGender(rawValue: (waitForInput() as! TextMessage).content)!
+            form.type = (Question(AI: self)
+                .withMessage(message: TextMessage(content: "Awesome name! is \(form.petName) a dog or a cat?", from: .Other))
+                .withInput(type: .SelectInput)
+                .withSelectData(data: [("Dog", "Dog"), ("Cat", "Cat")])
+                .start() as! TextMessage).content
             
-            delay(time: SHORT)
-            chat.sendInput(message: TextMessage(content: "How old is \(form.petName)?", from: .Other))
-            let pickerAge = chat.changeInputView(to: .SelectInput)
-            pickerAge.loadData(data: [
-                ("<1 year", "<1 year"),
-                ("1-3 years", "1-3 years"),
-                ("3-5 years", "3-5 years"),
-                ("5-8 years", "5-8 years"),
-                ("8+ years", "8+ years")])
-            form.age = PetAge(rawValue: (waitForInput() as! TextMessage).content)!
+            form.gender = (Question(AI: self)
+                .withMessage(message: TextMessage(content: "And is \(form.petName) a girl or a boy?", from: .Other))
+                .withInput(type: .TextInput)
+                .withInput(type: .SelectInput)
+                .withSelectData(data: [("Boy", "Boy"), ("Girl", "Girl")])
+                .start() as! TextMessage).content
             
-            delay(time: SHORT)
-            chat.sendInput(message: TextMessage(content: "What type of breed?", from: .Other))
-            let pickerBreed = chat.changeInputView(to: .SearchSelectInput)
-            pickerBreed.loadData(data: [])
-            form.breed = (waitForInput() as! TextMessage).content
+            form.age = (Question(AI: self)
+                .withMessage(message: TextMessage(content: "How old is \(form.petName)?", from: .Other))
+                .withInput(type: .SelectInput)
+                .withSelectData(data: [
+                        ("<1 year", "<1 year"),
+                        ("1-3 years", "1-3 years"),
+                        ("3-5 years", "3-5 years"),
+                        ("5-8 years", "5-8 years"),
+                        ("8+ years", "8+ years")
+                    ])
+                .start() as! TextMessage).content
             
-            delay(time: SHORT)
-            chat.sendInput(message: TextMessage(content: "Lastly, where do you and \(form.petName) live?", from: .Other))
-            let pickerAddress = chat.changeInputView(to: .SearchSelectInput)
-            pickerAddress.loadData(data: [])
-            form.address = (waitForInput() as! TextMessage).content
+            form.breed = (Question(AI: self)
+                .withMessage(message: TextMessage(content: "What type of breed?", from: .Other))
+                .withInput(type: .SearchSelectInput)
+                .withSelectData(data: [("None for now", "None for now")])
+                .start() as! TextMessage).content
             
-            delay(time: SHORT)
-            chat.sendInput(message: TextMessage(content: "Great, I’ve got everything I need. You ready to see your price now.", from: .Other))
-            chat.sendInput(message: TextMessage(content: form.getDescription(), from: .Other))
+            form.address = (Question(AI: self)
+                .withMessage(message: TextMessage(content: "Lastly, where do you and \(form.petName) live?", from: .Other))
+                .withInput(type: .SearchSelectInput)
+                .withSelectData(data: [("None for now", "None for now")])
+                .withBeforeQueryFunction(closure: {question, query in
+                    question.messengerInput?.loadData(data: [
+                            ("Every time you search", "Every time you search")
+                        ])
+                })
+                .start() as! TextMessage).content
             
-            self.chat.sendInput(message: TextMessage(content: "Pet: " + form.getDescription(), from: .Other))
+            _ = Question(AI: self)
+                .withMessage(message: TextMessage(content: "Great, I’ve got everything I need. You ready to see your price now.", from: .Other))
+                .start()
+            
+            _ = Question(AI: self)
+                .withMessage(message: TextMessage(content: "Pet: " + form.getDescription(), from: .Other))
+                .start()
             forms.append(form)
         }
     }
@@ -142,30 +230,12 @@ class QuoteAI: AILogic {
  address: start typing postcode, connect to /addresses (check gateway-api for docs), it returns addresses based on search, you select one
  */
 
-enum PetType: String {
-    case Cat = "Cat"
-    case Dog = "Dog"
-}
-
-enum PetGender: String {
-    case Male = "Male"
-    case Female = "Female"
-}
-
-enum PetAge: String {
-    case LessOneYear = "<1 year"
-    case OneToThreeYears = "1-3 years"
-    case ThreeToFiveYears = "3-5 years"
-    case FiveToEightYears = "5-8 years"
-    case PlusEightYears = "8+ years"
-}
-
 class QuoteForm {
     var petName: String = ""
-    var type: PetType = .Cat
-    var gender: PetGender = .Male
+    var type: String = ""
+    var gender: String = ""
     var breed: String = ""
-    var age: PetAge = .LessOneYear
+    var age: String = ""
     var address: String = ""
     
     func getDescription() -> String{
