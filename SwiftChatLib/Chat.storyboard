@@ -198,7 +198,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lhe-Wa-cKf">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lhe-Wa-cKf">
                                             <rect key="frame" x="0.0" y="0.0" width="360" height="0.0"/>
                                             <color key="backgroundColor" red="0.0" green="0.63529411764705879" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -211,12 +211,17 @@
                                 </view>
                                 <color key="backgroundColor" red="0.0" green="0.63529411764705879" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="lhe-Wa-cKf" firstAttribute="top" secondItem="BoG-2l-5uH" secondAttribute="top" id="cab-aQ-y5d"/>
-                                    <constraint firstAttribute="bottom" secondItem="lhe-Wa-cKf" secondAttribute="bottom" id="mNf-Ug-SLC"/>
-                                    <constraint firstAttribute="trailing" secondItem="lhe-Wa-cKf" secondAttribute="trailing" id="nHZ-5T-hrM"/>
-                                    <constraint firstItem="lhe-Wa-cKf" firstAttribute="leading" secondItem="BoG-2l-5uH" secondAttribute="leading" id="w5w-k4-iAh"/>
+                                    <constraint firstItem="lhe-Wa-cKf" firstAttribute="top" secondItem="BoG-2l-5uH" secondAttribute="top" id="2NR-VA-pC8"/>
+                                    <constraint firstItem="lhe-Wa-cKf" firstAttribute="leading" secondItem="BoG-2l-5uH" secondAttribute="leading" id="Iie-5v-qIv"/>
+                                    <constraint firstItem="lhe-Wa-cKf" firstAttribute="height" secondItem="BoG-2l-5uH" secondAttribute="height" id="fth-D1-mKW"/>
+                                    <constraint firstItem="lhe-Wa-cKf" firstAttribute="width" secondItem="BoG-2l-5uH" secondAttribute="width" id="yQf-XP-S0j"/>
                                 </constraints>
                                 <size key="customSize" width="360" height="50"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="textview" destination="lhe-Wa-cKf" id="71D-cb-awO"/>
                                 </connections>
@@ -228,14 +233,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlg-sw-H5d" userLabel="Touch Mask" customClass="RightCellTouchMask" customModule="SwiftChatLib" customModuleProvider="target">
-                                            <rect key="frame" x="-0.5" y="0.0" width="360" height="0.0"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <accessibility key="accessibilityConfiguration">
-                                                <bool key="isElement" value="YES"/>
-                                            </accessibility>
-                                        </view>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ohf-xb-EKE" customClass="DeletableTextView" customModule="SwiftChatLib" customModuleProvider="target">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ohf-xb-EKE" customClass="DeletableTextView" customModule="SwiftChatLib" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="360" height="0.0"/>
                                             <color key="backgroundColor" red="0.72549019607843135" green="0.82352941176470584" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -247,20 +245,21 @@
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" red="0.72549019607843135" green="0.82352941176470584" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="xlg-sw-H5d" secondAttribute="trailing" id="BoS-Le-mRg"/>
-                                    <constraint firstAttribute="bottom" secondItem="xlg-sw-H5d" secondAttribute="bottom" id="LdD-MC-Njb"/>
-                                    <constraint firstItem="xlg-sw-H5d" firstAttribute="leading" secondItem="H9S-dF-vz7" secondAttribute="leading" id="Nvt-fQ-zWB"/>
-                                    <constraint firstItem="Ohf-xb-EKE" firstAttribute="top" secondItem="H9S-dF-vz7" secondAttribute="top" id="cdy-TZ-QWo"/>
-                                    <constraint firstItem="Ohf-xb-EKE" firstAttribute="leading" secondItem="H9S-dF-vz7" secondAttribute="leading" id="k5k-jI-DKB"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ohf-xb-EKE" secondAttribute="trailing" id="uHV-ff-alr"/>
-                                    <constraint firstItem="xlg-sw-H5d" firstAttribute="top" secondItem="H9S-dF-vz7" secondAttribute="top" id="wYb-D4-aDY"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ohf-xb-EKE" secondAttribute="bottom" id="z8u-w3-vwV"/>
+                                    <constraint firstItem="Ohf-xb-EKE" firstAttribute="height" secondItem="H9S-dF-vz7" secondAttribute="height" id="3Jj-A1-jrv"/>
+                                    <constraint firstItem="Ohf-xb-EKE" firstAttribute="leading" secondItem="H9S-dF-vz7" secondAttribute="leading" id="FoF-5T-Ewi"/>
+                                    <constraint firstItem="Ohf-xb-EKE" firstAttribute="width" secondItem="H9S-dF-vz7" secondAttribute="width" id="Gjc-Z8-k6B"/>
+                                    <constraint firstItem="Ohf-xb-EKE" firstAttribute="top" secondItem="H9S-dF-vz7" secondAttribute="top" id="RHL-yK-mLR"/>
                                 </constraints>
                                 <size key="customSize" width="360" height="50"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="textView" destination="Ohf-xb-EKE" id="4jX-cW-PH0"/>
-                                    <outlet property="touchMask" destination="xlg-sw-H5d" id="I8h-dq-N14"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
