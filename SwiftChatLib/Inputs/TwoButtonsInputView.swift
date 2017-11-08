@@ -26,8 +26,8 @@ class TwoButtonsInputView: MessengerInput {
         super.loadData(data: data)
         self.data = data
         DispatchQueue.main.async {
-            self.leftButton.titleLabel?.text = data[0].0
-            self.rightButton.titleLabel?.text = data[1].0
+            self.leftButton.setTitle(data[0].0, for: .normal)
+            self.rightButton.setTitle(data[1].0, for: .normal)
         }
     }
 }
